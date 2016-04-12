@@ -1,0 +1,69 @@
+body {
+
+	background-color: #CCD6DF;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:13px;
+	  
+}
+
+a, a:active a:link{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+text-decoration:none;
+color:#000000;
+}
+
+
+a:hover{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+text-decoration:underline;
+color:#333333;
+}
+
+.pdf_link:link{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:13px;
+color: #0000FF;   
+text-decoration:underline;
+}
+
+.pdf_link:visited{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:13px;
+color: #FF6633;
+text-decoration:underline;
+}
+
+.pdf_link:hover{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:13px;
+color:#000000;
+text-decoration:underline;
+}
+
+.session_heading{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:13px;
+font-weight:bold;
+}
+
+.dropdownbox
+{width:50px;
+border:none;}
+
+
+
+
+
+/*.top_nav_text_link{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:10px;
+color:#ffffff;
+}
+
+.top_nav_text_link:hover{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:10px;
+color:#f9d0e7;
+}*/

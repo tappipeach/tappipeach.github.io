@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href= "stylesheet.css" type="text/css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Search</title>
+
+
+
+<style type="text/css">
+
+<!--
+
+body {
+
+	background-color: #CCD6DF;
+
+}
+
+-->
+
+</style>
+
+<script language="JavaScript" src="searchIndex.js"></script>
+
+<script language="Javascript">
+
+
+
+// Call this function from document body to create generic dropdown menu
+
+function generateMenu(formObjname, onChangeStr, firstMenuLine) {
+
+
+
+	if (window.profiles) {
+
+
+
+		//generate array based on searchIndex.js
+
+		var menuArray = buildArrayfromIndex();
+
+
+
+		//Add first line to menuArray array
+
+		MenuOptionsArray1 = new Array(firstMenuLine+"|0")
+
+		MenuOptionsArray2 = MenuOptionsArray1.concat(menuArray)
+
+		optStr = "";
+
+
+
+		for (i=0; i<MenuOptionsArray2.length; i++) {
+
+				divide = MenuOptionsArray2[i].split("|");
+
+				optStr += "<option value=\"" + divide[1] + "\">" + divide[0] + "</option>";
+
+		}
+
+
+
+		return "<select name=\""+ formObjname +"\" onChange=\"" + onChangeStr + ";\">" + optStr + "</select>";
+
+
+
+	} else {
+
+		return "";
+
+	}
+
+}
+
+
+
+
+
+//Build dropdown menu options based on searchIndex.js
+
+function buildArrayfromIndex() {
+
+
+
+	tmpArray = new Array();
+
+
+
+	// add pages you do NOT want included in your dropdown menu
+
+	// to the "filterList" array.  These pages should be listed exactly
+
+	// as they appear in searchIndex.js
+
+	filterList = new Array();
+
+
+
+	for (x=0; x < profiles.length; x++) {
+
+		divide = profiles[x].split("|");
+
+		//Filter out pages that are in filterList array
+
+		filteredPg = false;
+
+		for (y=0; y<filterList.length; y++) {
+
+			if (filterList[y].toUpperCase() == divide[3].toUpperCase()) {
+
+				filteredPg = true;
+
+				break;
+
+			}
+
+		}
+
+		if (!filteredPg) tmpArray[tmpArray.length] = divide[0] + "|" + divide[13];
+
+	}
+
+
+
+	//alphabetize tmpArray by page title
+
+	tmpArray.sort(compare);
+
+	return tmpArray;
+
+}
+
+
+
+
+
+// Sorts search results based on 1.Number of hits 2.alphabetically
+
+function compare(a, b) {
+
+
+
+	if (a.toLowerCase() < b.toLowerCase()) {return -1}
+
+	if (a.toLowerCase() > b.toLowerCase()) {return 1}
+
+	return 0
+
+}
+
+
+
+
+
+
+
+//This routine is called via dropdown menu's "onChange"
+
+function goPage(menuNm) {
+
+		if (menuNm.options[menuNm.selectedIndex].value != "0") {
+
+			location.href = menuNm.options[menuNm.selectedIndex].value;
+
+		}
+
+	}
+
+
+
+</script>
+
+
+
+<script LANGUAGE="JavaScript">
+
+<!-- Begin
+
+function formHandler(){
+
+var URL = document.form.site.options[document.form.site.selectedIndex].value;
+
+window.location.href = URL;
+
+}
+
+// End -->
+
+</SCRIPT>
+
+
+<script type="text/JavaScript">
+
+<!--
+
+function MM_swapImgRestore() { //v3.0
+
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+
+}
+
+
+
+function MM_preloadImages() { //v3.0
+
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+
+}
+
+
+
+function MM_findObj(n, d) { //v4.01
+
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+
+}
+
+
+
+function MM_swapImage() { //v3.0
+
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+
+}
+
+//-->
+
+</script>
+</head>
+<body onload="MM_preloadImages('images/nav_sess.gif','images/pres1a.gif','images/nav_title.gif','images/nav_search.gif','images/nav_author.gif')">
+
+  <table width="760" border="0" cellpadding="0" cellspacing="0" align="center">
+    <tr>
+      <td height="134" bgcolor="#FFFFFF"><table width="762" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="1" colspan="3" bgcolor="#000000"><img src="../images/1x1_trans.gif" width="1" height="1" /></td>
+          </tr>
+          <tr>
+            <td width="1" bgcolor="#000000"><img src="../images/1x1_trans.gif" width="1" height="1" /></td>
+            <td width="760"><table width="760" height="239" border="0" cellpadding="0" cellspacing="0" bordercolor="#000000">
+                <tr>
+                  <td height="138" bgcolor="#000000"><img src="images/banner.jpg" width="760" height="200" /></td>
+                </tr>
+                <tr>
+                  <td height="39" align="center" valign="middle" bgcolor="#000000"><table width="531" height="10" border="0" cellpadding="0" cellspacing="0">
+                      <tr align="center" valign="middle">
+                        <td width="104"><a href="index.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image8','','images/nav_sess.gif',1)"></a><a href="index.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','images/nav_sess.gif',1)"><img src="images/nav_sess_a.gif" name="Image9" width="129" height="20" border="0" id="Image9" /></a></td>
+                        <td width="17">&nbsp;</td>
+                        <td width="107"><a href="presenter.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image121','','images/pres1a.gif',1)"><img src="images/pres1.gif" name="Image121" border="0" id="Image121" /></a><a href="authors.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','images/nav_author.gif',1)"></a></td>
+                        <td width="17">&nbsp;</td>
+                        <td width="104"><a href="title.htm" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image131','','images/nav_title.gif',1)"></a><a href="title.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','images/nav_title.gif',1)"><img src="images/nav_title_a.gif" name="Image11" width="104" height="20" border="0" id="Image11" /></a></td>
+                        <td width="17">&nbsp;</td>
+                        <td width="104"><a href="images/nav_search_a.gif" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image16','','images/nav_search.gif',1)"></a><a href="search.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','images/nav_search.gif',1)"><img src="images/nav_search_a.gif" name="Image12" width="104" height="20" border="0" id="Image12" /></a></td>
+                      </tr>
+                    </table></td>
+                </tr>
+              </table></td>
+            <td width="1" bgcolor="#666666"><img src="images/1x1_trans.gif" width="1" height="1" /></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr>
+      <td align="left" valign="top" bgcolor="#666666"><table width="762" border="0" cellpadding="8" cellspacing="2" bordercolor="#000000">
+          <tr bgcolor="#CCCCCC" height="15">
+            <td width="160" height="15" align="center" bgcolor="#CCD6DF"><div align="center"><strong><a href="index.html">Session</a></strong></div></td>
+            <td width="268" bgcolor="#CCD6DF" ><div align="center"><strong><a href="presenter.html">Presenter</a></strong></div></td>
+            <td width="314" bgcolor="#CCD6DF" ><div align="center"><strong><a href="title.html">Title</a></strong></div></td>
+
+			</tr>
+          
+          <tr bgcolor="#99CCFF" height="24">
+            <td colspan="3"  align="left" bgcolor="#FFFFFF" width="650">
+			<table width="650" cellpadding="2" cellspacing="2" border="0" align="center">
+			<tr><td height="35">&nbsp; </td></tr>
+			<tr><td><h2 align="left">Search this site</h2> </td></tr>
+			
+			<tr><td><FORM NAME="searchForm" ACTION="./searchresults.html">
+
+                                                <TABLE ID="Table2" BORDER=0 CELLSPACING=3 CELLPADDING=1 WIDTH=619 HEIGHT=145>
+
+                                                  
+
+                                                    
+
+                                                    <TR>
+
+                                                        <TD>
+
+                                                            <P>&nbsp;</P>
+
+                                                        </TD>
+
+                                                    </TR>
+
+                                                    <TR>
+
+                                                        <TD>
+
+                                                            <P><B>Keyword Search</B> &nbsp;&nbsp;
+                                                              <INPUT ID="FormsEditField1" TYPE=TEXT NAME="searchField" VALUE="" SIZE=40 MAXLENGTH=50>
+
+                                                                 &nbsp;  <INPUT TYPE=SUBMIT NAME="FormsButton1" VALUE="Go" ID="FormsButton1"></TD>
+
+                                                    </TR>
+
+                                                    <TR>
+
+                                                        <TD>
+
+                                                            <P><B>Any words <INPUT ID="FormsRadioButton1" TYPE=RADIO CHECKED NAME="srcriteria" VALUE="any">
+
+                                                                 &nbsp; &nbsp; &nbsp;  All words <INPUT ID="FormsRadioButton2" TYPE=RADIO NAME="srcriteria" VALUE="all"> &nbsp; &nbsp; &nbsp;  Exact phrase <INPUT ID="FormsRadioButton3" TYPE=RADIO
+
+                                                                 NAME="srcriteria" VALUE="phrase"></B></TD>
+
+                                                    </TR>
+
+                                                    <TR>
+
+                                                        <TD>
+
+                                                            <P>NOTE: Type spaces between your search words, NOT commas.</P>
+
+                                                        </TD>
+
+                                                    </TR>
+
+                                                </TABLE>
+
+                                            </FORM></td>
+			</tr>
+			
+			<TR>
+
+                                        <TD ALIGN="left">
+
+                                            <TABLE WIDTH=620 BORDER=0 CELLSPACING=0 CELLPADDING=0 NOF=TE >
+
+                                                <TR>
+
+                                                    <TD>
+
+                                                        <P><B>Search by Title</B></P>
+
+                                                    </TD>
+
+                                                </TR>
+
+                                            </TABLE>
+
+                                        </TD>
+
+                                    </TR>
+			
+			<TR>
+
+                                        <TD ALIGN="left">
+
+                                            <TABLE WIDTH=619 BORDER=0 CELLSPACING=0 CELLPADDING=0 NOF=TE>
+
+                                                <TR>
+
+                                                    <TD>
+
+                                                        <P><form>
+
+        <script language="Javascript">document.write(generateMenu("selMenu", "goPage(this)", "Select a Title"));</script>
+
+</form>&nbsp;</P>
+
+                                                    </TD>
+
+                                                </TR>
+
+                                            </TABLE>
+
+                                        </TD>
+
+                                    </TR>
+			
+			</table>
+			
+			
+			</td>
+          </tr>
+		 
+		  
+        </table></td>
+    </tr>
+    <tr>
+      <td height="5" bgcolor="#000000">&nbsp;</td>
+    </tr>
+	
+	
+	
+  </table>
+</div>
+
+</body>
+</html>
